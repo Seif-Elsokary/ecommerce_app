@@ -27,6 +27,7 @@ public class Cart {
                ,cascade = CascadeType.ALL
                ,orphanRemoval = true)
 //    @JsonIgnore
+    @Builder.Default
     private Set<CartItem> item = new HashSet<>();
 
     @OneToOne

@@ -62,10 +62,8 @@ public class ShopConfig {
         authProvider.setPasswordEncoder(getPasswordEncoder());
         return authProvider;
     }
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http)
-            throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
 
                 .exceptionHandling(exception ->
@@ -75,17 +73,20 @@ public class ShopConfig {
                         session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/v3/api-docs/**",       // السماح لـ OpenAPI Docs
+                                "/swagger-ui/**",        // السماح لـ Swagger UI
+                                "/swagger-ui.html"       // السماح بصفحة Swagger
+                        ).permitAll()
                         .requestMatchers("/api/v1/products/add", "/api/v1/products/update", "/api/v1/products/delete")
                         .hasAuthority("ADMIN")
                         .requestMatchers(SECURED_URLS.toArray(String[]::new)).authenticated()
                         .anyRequest().permitAll()
                 );
 
-
         http.authenticationProvider(authenticationProvider());
-        http.addFilterBefore(authTokenFilter() , UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authTokenFilter(), UsernamePasswordAuthenticationFilter.class);
         return http.build();
-
-
     }
+
 }
