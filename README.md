@@ -1,52 +1,76 @@
-# ecommerce_app
+# E-Commerce API
 
-Here’s an improved `README.md` for your project in English:
+## Introduction
+This is a backend system for an **E-Commerce** application built with **Spring Boot**. It provides a RESTful API for managing users, products, orders, shopping carts, and authentication.
 
----
+## Features
+- User authentication with JWT-based login and registration
+- Product management with CRUD operations
+- Shopping cart functionality to add, update, and remove items
+- Order processing, including order placement and tracking
+- Role-based access control (RBAC)
+- API documentation using Swagger UI
 
-# 🛒 E-Commerce API
+## Setup and Installation
 
-**E-Commerce API** is a fully functional **Spring Boot**-based backend system for managing an online store. It provides a complete set of APIs for handling products, orders, users, and authentication.
+### Prerequisites
+- Java 21
+- Maven
+- MySQL
 
-## 🚀 Features
-
-- 🔐 **User Authentication & Registration** with **JWT Authentication**
-- 🛍️ **Product Management** (Create, Update, Delete, View Products)
-- 📦 **Order Management** (Create & Track Orders)
-- 🛒 **Shopping Cart Management** (Add & Remove Items)
-- 👥 **User Roles & Permissions** with **RBAC (Role-Based Access Control)**
-- 📊 **API Documentation** with **Springdoc OpenAPI**
-
-## 🛠️ Technologies Used
-
-- **Java 21**
-- **Spring Boot 3.4.3**
-- **Spring Security & JWT**
-- **Spring Data JPA & MySQL**
-- **Swagger (Springdoc OpenAPI)**
-- **Lombok & ModelMapper**
-
-## 🏃 How to Run the Project
-
-1️⃣ Ensure you have **Java 21**, **Maven**, and **MySQL** installed on your system.  
-2️⃣ Create a MySQL database named **ecommerce_db**.  
-3️⃣ Update the database connection settings in `application.properties`.  
-4️⃣ Run the following commands in the terminal:
-
+### Clone the Repository
 ```bash
-mvn clean install
-mvn spring-boot:run
-```
+git clone https://github.com/seifElsokary2003/ecommerce_app.git  
+cd ecommerce_app  
+```  
 
-5️⃣ Open your browser and navigate to:
-- 🔹 **API Documentation**: [http://localhost:8080/swagger-ui.html](http://localhost:8181/swagger-ui.html)
+### Database Configuration
+- Create a database in MySQL:
+```sql
+CREATE DATABASE ecommerce_db;  
+```  
+- Update `application.properties` with your MySQL credentials:
+```properties
+spring.datasource.url=jdbc:mysql://localhost:3306/ecommerce_db  
+spring.datasource.username=your_username  
+spring.datasource.password=your_password  
+```  
+**It is recommended to use environment variables for security instead of hardcoding credentials.**
 
-## ✨ Future Enhancements
+### Run the Project
+```bash
+mvn clean install  
+mvn spring-boot:run  
+```  
 
-- Add **payment gateway integration**
-- Improve **recommendation system** using AI
-- Support **product image uploads**
+### API Documentation
+After running the application, access the API documentation:
+- Swagger UI: [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
 
----
+## Project Structure
+- `entity/` - Database entities such as Product, User, Cart
+- `repository/` - Spring Data JPA repositories
+- `service/` - Business logic services
+- `controller/` - REST API controllers
+- `security/` - JWT authentication setup
+- `config/` - Application configuration files
+- `testing/serviceTest/` - JUnit test cases
 
-💡 **Contributions are welcome!** Feel free to open an **Issue** or submit a **Pull Request** to improve the project. 🚀
+## Running Tests
+JUnit test cases are included for services. To run the tests:
+```bash
+
+mvn test  
+
+```  
+
+Test files are located in:  
+`src/test/java/com/example/E_commerce/testing/serviceTest/`
+
+## Future Enhancements
+- Payment gateway integration
+- AI-based product recommendations
+- Product image upload
+
+## Contributing
+Contributions are welcome. Fork the repository and submit a pull request.
