@@ -24,6 +24,11 @@ public class User {
     private String lastName;
     private String email;
     private String password;
+//
+//    public User() {
+//        // Constructor بدون بارامترات
+//    }
+
 
     @OneToOne(mappedBy = "user" ,
               cascade = CascadeType.ALL,
