@@ -1,5 +1,7 @@
 # E-Commerce API
 
+**Ecommerce App** is a web application for online shopping. It allows users to browse products, add them to the cart, and complete purchases. Key features include product management, user accounts, and advanced search. The backend is built with Java and Spring Boot, with MySQL for the database.
+
 ## Introduction
 This is a backend system for an **E-Commerce** application built with **Spring Boot**. It provides a RESTful API for managing users, products, orders, shopping carts, and authentication.
 
